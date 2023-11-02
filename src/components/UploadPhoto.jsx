@@ -1,8 +1,10 @@
-import React from 'react';
-import { useState } from 'react';
+import React from "react";
+import { useState , useEffect} from "react";
 
 function UploadPhoto() {
-    const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [name, setName] = useState("");
+  const [formError, setFormError] = useState("");
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -16,19 +18,42 @@ function UploadPhoto() {
       reader.onload = (event) => {
         // The file content is available in event.target.result
         const fileContent = event.target.result;
-        
-        // You can store the file content in local storage
-        localStorage.setItem('uploadedFile', fileContent);
-        
-        console.log('File uploaded and stored locally.');
+
+        // I can store the file content in local storage
+        localStorage.setItem("uploadedFile", fileContent);
+
+        console.log("File uploaded and stored locally.");
       };
 
-      // Read the selected file as a data URL
+      // selected file as a data URL
       reader.readAsDataURL(selectedFile);
     } else {
-      alert('Please select a file to upload.');
+      alert("Please select a file to upload.");
     }
   };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (selectedFile && name) {
+      localStorage.setItem("userName", name);
+      setFormError("");
+    //   alert(`Hello, ${name}!`);
+    } else {
+      setFormError("Please fill in both the photo and name fields.");
+    }
+  };
+  // Use the 'useEffect' hook to retrieve the name from localStorage on component initialization
+  useEffect(() => {
+    const storedName = localStorage.getItem("userName");
+    if (storedName) {
+      setName(storedName);
+    }
+  }, []);
+
   return (
     <>
       <h1>Get Started</h1>
@@ -37,10 +62,19 @@ function UploadPhoto() {
         <input type="file" accept="image/*" onChange={handleFileChange} />
         <button onClick={handleUpload}>Upload</button>
       </div>
-  
-
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Your Name"
+            value={name} // Bind the input value to the 'name' state
+            onChange={handleNameChange} // Handle input changes
+          />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </>
-  )
+  );
 }
 
-export default UploadPhoto
+export default UploadPhoto;
