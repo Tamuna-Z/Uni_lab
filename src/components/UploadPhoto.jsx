@@ -1,10 +1,12 @@
 import React from "react";
 import { useState , useEffect} from "react";
+import { useNavigate } from 'react-router-dom';
 
 function UploadPhoto() {
   const [selectedFile, setSelectedFile] = useState(null);
   const [name, setName] = useState("");
   const [formError, setFormError] = useState("");
+  const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -42,6 +44,7 @@ function UploadPhoto() {
       localStorage.setItem("userName", name);
       setFormError("");
     //   alert(`Hello, ${name}!`);
+    navigate('/form');
     } else {
       setFormError("Please fill in both the photo and name fields.");
     }
@@ -70,8 +73,9 @@ function UploadPhoto() {
             value={name} // Bind the input value to the 'name' state
             onChange={handleNameChange} // Handle input changes
           />
-          <button type="submit">Submit</button>
+          <button type="submit">Sign in</button>
         </form>
+        {formError && <p style={{ color: 'red' }}>{formError}</p>}
       </div>
     </>
   );

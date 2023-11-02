@@ -14,6 +14,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Landing/>}/>
       <Route path="/authorization" element={<Authorization />} />
+      <Route path="/form" element={<Form/>}/>
       
     </Routes>
 
