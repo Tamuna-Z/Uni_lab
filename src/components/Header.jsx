@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyledHeader,LiStyle,NavStyle,FormLogo,Wrapper} from "../styledcomponents/header.styled"
+import {StyledHeader,LiStyle,NavStyle,FormLogo,Wrapper,HeaderPhoto, Image} from "../styledcomponents/header.styled"
 
  function Header({selectedFile,formError}) {
   const name = localStorage.getItem('userName');
@@ -16,7 +16,7 @@ import {StyledHeader,LiStyle,NavStyle,FormLogo,Wrapper} from "../styledcomponent
       
       {/* api */}
       <LiStyle>api</LiStyle>
-      {photo && <LiStyle><img src={photo} alt="User Photo" /></LiStyle>}
+      {photo && <HeaderPhoto><Image src={photo} alt="User Photo" /></HeaderPhoto>}
       
     </ul>
   </NavStyle>

@@ -21,7 +21,27 @@ margin:50px;
 color:white;
 width:85px;
 height: 35px;
+line-height:35px;
 `
 export const NavStyle=styled.nav`
 display:flex;
 `
+export const HeaderPhoto=styled.div`
+position: relative;
+width:80px;
+height:80px;
+
+
+`
+
+export const Image =styled.img`
+width:100%;
+height:100%;
+margin:27px 20px 20px 20px;
+position:absolute;
+top:0;
+left:0;
+object-fit:cover;
+border-radius:50%;
+`
+
