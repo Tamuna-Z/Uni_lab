@@ -4,17 +4,31 @@ import Landing from "./pages/Landing";
 import Authorization from "./pages/Authorization";
 import Form from "./pages/Form";
 import Api_page from "./pages/Api_page";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route , Navigate} from "react-router-dom";
 import { GlobalStyled } from "./styledcomponents/Global.styled";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  const [isUserAuthorized, setIsUserAuthorized] = useState(false);
   return (
     <>
       <GlobalStyled/>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/authorization" element={<Authorization />} />
-        <Route path="/form" element={<Form />} />
+        <Route
+          path="/authorization"
+          element={<Authorization setIsUserAuthorized={setIsUserAuthorized} />}
+        />
+        <Route
+          path="/form"
+          element={
+            isUserAuthorized ? (
+              <Form  setIsUserAuthorized={setIsUserAuthorized}/>
+            ) : (
+              <Navigate to="/authorization" replace />
+            )
+          }
+        />
       </Routes>
     </>
   );

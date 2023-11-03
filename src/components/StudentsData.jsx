@@ -3,7 +3,17 @@ import {Wrapper} from "../styledcomponents/StudentsData.styled";
 
 function StudentsData() {
   return (
-    <Wrapper>StudentsData</Wrapper>
+    <Wrapper>
+      <div>
+        <ul>
+          <li>მოსწავლის სახელი და გვარი</li>
+          <li>სტატუსი</li>
+          <li>სქესი</li>
+          <li>ქულები</li>
+          <li>პირადი ნომერი</li>
+        </ul>
+      </div>
+    </Wrapper>
   )
 }
 

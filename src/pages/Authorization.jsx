@@ -1,10 +1,17 @@
 import React from 'react'
-import UploadPhoto from '../components/UploadPhoto'
+import UploadPhoto from '../components/UploadPhoto';
 
-function Authorization() {
+
+function Authorization({setIsUserAuthorized}) {
+  
+
+  
+
+
   return (
     <>
-   <UploadPhoto/>
+    
+   <UploadPhoto setIsUserAuthorized={setIsUserAuthorized}/>
 
     </>
   )

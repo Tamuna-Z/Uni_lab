@@ -1,12 +1,14 @@
 import React from "react";
 import { useState , useEffect} from "react";
 import { useNavigate } from 'react-router-dom';
+import { useMemo } from "react";
 
-function UploadPhoto() {
+function UploadPhoto({setIsUserAuthorized}) {
   const [selectedFile, setSelectedFile] = useState(null);
   const [name, setName] = useState("");
   const [formError, setFormError] = useState("");
   const navigate = useNavigate();
+  const memoizedSetIsUserAuthorized = useMemo(() => setIsUserAuthorized, [setIsUserAuthorized]);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -45,6 +47,7 @@ function UploadPhoto() {
       localStorage.setItem("file", selectedFile);
       setFormError("");
     //   alert(`Hello, ${name}!`);
+    memoizedSetIsUserAuthorized(true);
     navigate('/form');
     } else {
       setFormError("Please fill in both the photo and name fields.");
@@ -57,6 +60,14 @@ function UploadPhoto() {
       setName(storedName);
     }
   }, []);
+  // const handleAuthorization = () => {
+  //   if (isUserAuthorized) {
+  //     setIsAuthorized(true); // Set authorization status in App component
+  //     navigate("/form");
+  //   } else {
+  //     alert("Authorization failed. Please try again.");
+  //   }
+  // }
 
   return (
     <>
@@ -74,7 +85,7 @@ function UploadPhoto() {
             value={name} // Bind the input value to the 'name' state
             onChange={handleNameChange} // Handle input changes
           />
-          <button type="submit">Sign in</button>
+          <button type="submit" >Sign in</button>
         </form>
         {formError && <p style={{ color: 'red' }}>{formError}</p>}
       </div>
