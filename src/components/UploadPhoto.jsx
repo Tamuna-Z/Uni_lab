@@ -42,6 +42,7 @@ function UploadPhoto() {
     e.preventDefault();
     if (selectedFile && name) {
       localStorage.setItem("userName", name);
+      localStorage.setItem("file", selectedFile);
       setFormError("");
     //   alert(`Hello, ${name}!`);
     navigate('/form');

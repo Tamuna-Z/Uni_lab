@@ -1,22 +1,27 @@
 import React from 'react';
-import {StyledHeader} from "../styledcomponents/header.styled"
+import {StyledHeader,LiStyle,NavStyle,FormLogo,Wrapper} from "../styledcomponents/header.styled"
 
- function Header() {
+ function Header({selectedFile,formError}) {
+  const name = localStorage.getItem('userName');
+  const photo = localStorage.getItem('uploadedFile');
   return (
     <>
+    <Wrapper>
     <StyledHeader>
-    <nav>
-      <ul>
-        <li>Form</li>
-        {/* your name */}
-        <li>{}</li>
-        {/* api */}
-        <li>{}</li>
-        {/* photo */}
-        <li>{}</li>
-      </ul>
-    </nav>
-    </StyledHeader>
+    
+    <FormLogo>Form</FormLogo>
+    <NavStyle>
+    <ul>
+     {name && <LiStyle>{name}</LiStyle>}
+      
+      {/* api */}
+      <LiStyle>api</LiStyle>
+      {photo && <LiStyle><img src={photo} alt="User Photo" /></LiStyle>}
+      
+    </ul>
+  </NavStyle>
+  </StyledHeader>
+    </Wrapper>
     </>
   )
 }
