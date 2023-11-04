@@ -1,8 +1,47 @@
 import React from "react";
 import { Wrapper, DataLi } from "../styledcomponents/StudentsData.styled";
 import studentsData from "./data";
+import { useState } from "react";
 
 function StudentsData() {
+  // const studentsPerPage = 10;
+  // const [currentPage, setCurrentPage] = useState(1);
+
+  // const indexOfLastStudent = currentPage * studentsPerPage;
+  // const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+  // const currentStudents = studentsData.slice(indexOfFirstStudent, indexOfLastStudent);
+
+  // const totalPages = Math.ceil(studentsData.length / studentsPerPage);
+
+  // const nextPage = () => {
+  //   if (currentPage < totalPages) {
+  //     setCurrentPage(currentPage + 1);
+  //   }
+  // };
+
+  // const prevPage = () => {
+  //   if (currentPage > 1) {
+  //     setCurrentPage(currentPage - 1);
+  //   }
+  // };
+
+  const studentsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const indexOfLastStudent = currentPage * studentsPerPage;
+const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+const currentStudents = studentsData.slice(indexOfFirstStudent, indexOfLastStudent);
+const prevPage = () => {
+  if (currentPage > 1) {
+    setCurrentPage(currentPage - 1);
+  }
+};
+
+const nextPage = () => {
+  if (currentPage < totalPages) {
+    setCurrentPage(currentPage + 1);
+  }
+};
+
   return (
     <>
       <Wrapper>
@@ -21,7 +60,7 @@ function StudentsData() {
         </ul>
 
         {studentsData.map((student) => (
-          <ul>
+          <ul key={student.id}>
             <DataLi key={student.id}>{student.name}</DataLi>
             <li key={student.id}>{student.status}</li>
             <li key={student.id}>{student.gender}</li>
@@ -31,6 +70,17 @@ function StudentsData() {
             <li key={student.id}>{student.address}</li>
           </ul>
         ))}
+
+
+      {/* <div>
+        <button onClick={prevPage}>Previous Page</button>
+        <button onClick={nextPage}>Next Page</button>
+      </div> */}
+
+<div>
+  <button onClick={prevPage}>Previous Page</button>
+  <button onClick={nextPage}>Next Page</button>
+</div>
       </Wrapper>
     </>
   );
