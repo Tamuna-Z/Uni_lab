@@ -8,13 +8,17 @@ import {
   Wrapper,
   HeaderPhoto,
   Image,
-  PopUpWrapper,SignOutButton,CloseSign
+  PopUpWrapper,
+  
+  CloseSign,
 } from "../styledcomponents/header.styled";
+import { useNavigate } from 'react-router-dom';
 
 function Header({ selectedFile, formError }) {
   const name = localStorage.getItem("userName");
   const photo = localStorage.getItem("uploadedFile");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -24,6 +28,13 @@ function Header({ selectedFile, formError }) {
     setIsModalOpen(false);
   };
 
+  // const signOut = () => {
+  //   // Clear localStorage data and navigate to the landing page
+  //   localStorage.removeItem("userName");
+  //   localStorage.removeItem("uploadedFile");
+  //   navigate("/");
+  // };
+
   return (
     <>
       <Wrapper>
@@ -31,13 +42,14 @@ function Header({ selectedFile, formError }) {
           <FormLogo>Form</FormLogo>
           <NavStyle>
             <ul>
+              <LiStyle onClick={() => navigate('/api')}>api</LiStyle>
               {name && <LiStyle>{name}</LiStyle>}
 
               {/* api */}
-              <LiStyle>api</LiStyle>
+
               {photo && (
                 <HeaderPhoto onClick={openModal}>
-                  <Image src={photo} alt="User Photo"  />
+                  <Image src={photo} alt="User Photo" />
                 </HeaderPhoto>
               )}
             </ul>
@@ -47,20 +59,23 @@ function Header({ selectedFile, formError }) {
 
       {isModalOpen && (
         <PopUpWrapper>
-          <div >
-            <CloseSign onClick={closeModal}>
-              &times;
-            </CloseSign>
-           
-            <Image src={photo} alt="User Photo"  style={{ maxWidth: '30px', maxHeight: '30px', margin:'20px 50px ' }}/>
+          <div>
+            <CloseSign onClick={closeModal}>&times;</CloseSign>
+
+            <Image
+              src={photo}
+              alt="User Photo"
+              style={{
+                maxWidth: "30px",
+                maxHeight: "30px",
+                margin: "20px 50px ",
+              }}
+            />
 
             <SignOutButton>sign out</SignOutButton>
-            
           </div>
         </PopUpWrapper>
       )}
-
-      
     </>
   );
 }

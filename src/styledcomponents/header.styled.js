@@ -26,6 +26,13 @@ line-height:35px;
 export const NavStyle=styled.nav`
 display:flex;
 `
+// export const ApiDiv=styled.div`
+// width:30px;
+// height:20px;
+// background-color:white;
+// line-height:24px;
+// margin:15px;
+// `
 export const HeaderPhoto=styled.div`
 position: relative;
 width:80px;
@@ -54,9 +61,9 @@ position: fixed;
 
 `
 
-export const SignOutButton=styled.button`
-margin: 80px 40px;
-`
+// export const SignOutButton=styled.button`
+// margin: 80px 40px;
+// `
 export const CloseSign=styled.span`
           position: absolute;
           top: 0;

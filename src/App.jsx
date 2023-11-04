@@ -7,6 +7,7 @@ import Api_page from "./pages/Api_page";
 import { Routes, Route , Navigate} from "react-router-dom";
 import { GlobalStyled } from "./styledcomponents/Global.styled";
 import { useNavigate } from "react-router-dom";
+import ApiPage from "./pages/ApiPage";
 
 function App() {
   const [isUserAuthorized, setIsUserAuthorized] = useState(false);
@@ -26,6 +27,16 @@ function App() {
               <Form  setIsUserAuthorized={setIsUserAuthorized}/>
             ) : (
               <Navigate to="/authorization" replace />
+            )
+          }
+        />
+        <Route
+          path="/api"
+          element={
+            isUserAuthorized ? (
+              <ApiPage setIsUserAuthorized={setIsUserAuthorized}/>
+            ) : (
+              <Navigate to="/api" replace />
             )
           }
         />
