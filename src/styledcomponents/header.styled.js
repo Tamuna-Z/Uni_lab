@@ -3,7 +3,7 @@ export const Wrapper=styled.div`
 background-color:black;
 `
 export const StyledHeader=styled.header`
-width:100%;
+width:1201px;
 height:120px;
 display:flex;
 justify-content:space-between;
