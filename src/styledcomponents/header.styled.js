@@ -44,4 +44,24 @@ left:0;
 object-fit:cover;
 border-radius:50%;
 `
+export const PopUpWrapper=styled.div`
+background-color:white;
+width:150px;
+height:150px;
+position: fixed;
+ top: 70px;
+ right: 5px;
 
+`
+
+export const SignOutButton=styled.button`
+margin: 80px 40px;
+`
+export const CloseSign=styled.span`
+          position: absolute;
+          top: 0;
+          right: 0;
+          cursor: pointer;
+          color: red;
+          font-size: 24px;
+`

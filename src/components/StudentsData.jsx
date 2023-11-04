@@ -28,19 +28,22 @@ function StudentsData() {
   const studentsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastStudent = currentPage * studentsPerPage;
-const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
-const currentStudents = studentsData.slice(indexOfFirstStudent, indexOfLastStudent);
-const prevPage = () => {
-  if (currentPage > 1) {
-    setCurrentPage(currentPage - 1);
-  }
-};
+  const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+  const currentStudents = studentsData.slice(
+    indexOfFirstStudent,
+    indexOfLastStudent
+  );
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
-const nextPage = () => {
-  if (currentPage < totalPages) {
-    setCurrentPage(currentPage + 1);
-  }
-};
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   return (
     <>
@@ -62,25 +65,24 @@ const nextPage = () => {
         {studentsData.map((student) => (
           <ul key={student.id}>
             <DataLi key={student.id}>{student.name}</DataLi>
-            <li key={student.id}>{student.status}</li>
-            <li key={student.id}>{student.gender}</li>
-            <li key={student.id}>{student.idNumber}</li>
-            <li key={student.id}>{student.email}</li>
-            <li key={student.id}>{student.mobileNumber}</li>
-            <li key={student.id}>{student.address}</li>
+            <li >{student.status}</li>
+            <li >{student.gender}</li>
+            <li >{student.id}{student.idNumber}</li>
+            <li >{student.email}</li>
+            <li >{student.mobileNumber}</li>
+            <li >{student.address}</li>
           </ul>
         ))}
 
-
-      {/* <div>
+        {/* <div>
         <button onClick={prevPage}>Previous Page</button>
         <button onClick={nextPage}>Next Page</button>
       </div> */}
 
-<div>
-  <button onClick={prevPage}>Previous Page</button>
-  <button onClick={nextPage}>Next Page</button>
-</div>
+        <div>
+          <button onClick={prevPage}>Previous Page</button>
+          <button onClick={nextPage}>Next Page</button>
+        </div>
       </Wrapper>
     </>
   );
