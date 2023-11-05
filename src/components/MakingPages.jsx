@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {} from "../styledcomponents/MakingPage.styled"
 
 function MakingPages({totalPosts,postsPerPage, setCurrentPage}) {
     let pages=[];

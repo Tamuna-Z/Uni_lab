@@ -5,9 +5,6 @@ import { CardWrapper, CardContainer } from "../styledcomponents/ApiPage.styled";
 import Header from "../components/Header";
 import MakingPages from "../components/MakingPages";
 
-
-
-
 function ApiPage() {
   const [dateItem, setDateItem] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,13 +30,20 @@ function ApiPage() {
       <Header />
       <CardContainer dataItem={currentPosts}>
         {currentPosts.map((user, index) => (
-          <CardWrapper  >
+          <CardWrapper>
             <div key={index}>{user.title}</div>
             <div key={index}>{user.body}</div>
           </CardWrapper>
         ))}
-        <MakingPages totalPosts={dateItem.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
+      
       </CardContainer>
+      <div >
+          <MakingPages
+            totalPosts={dateItem.length}
+            postsPerPage={postsPerPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </div>
     </>
   );
 }

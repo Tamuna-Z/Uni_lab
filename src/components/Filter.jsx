@@ -4,9 +4,9 @@ import icon from "../assets/filter.png"
 
 function Filter() {
   return (
-    <div style={{display:'relative'}}>
-      <img src={icon} />
-      <FilterWrapper placeholder='Filter'/>
+    <div style={{position:'relative'}}>
+      <img src={icon} alt="filterIcon" style={{position:'absolute',top:'35px',left:'40px'}}/>
+      <FilterWrapper placeholder='Filter' type="text" dir="rtl" style={{textAlign:'center'}}/>
     </div>
   )
 }

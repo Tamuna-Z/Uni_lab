@@ -14,4 +14,10 @@ flex-direction:center;
 align-items:center;
 flex-wrap:wrap;
 padding:25px;
+margin-bottom:20px;
 `
+// export const PaginationWrapper=styled.div`
+// display:flex;
+// flex-wrap:wrap;
+// justify-content:center;
+// `

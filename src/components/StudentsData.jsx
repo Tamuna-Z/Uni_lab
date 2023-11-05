@@ -33,16 +33,11 @@ function StudentsData() {
     indexOfFirstStudent,
     indexOfLastStudent
   );
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
+  const totalPages = Math.ceil(studentsData.length / studentsPerPage);
 
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
+  // Function to set the current page
+  const setPage = (page) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -62,7 +57,7 @@ function StudentsData() {
           <li>დაბადების თარიღი</li>
         </ul>
 
-        {studentsData.map((student) => (
+        {currentStudents.map((student) => (
           <ul key={student.id}>
             <DataLi key={student.id}>{student.name}</DataLi>
             <li >{student.status}</li>
@@ -74,15 +69,19 @@ function StudentsData() {
           </ul>
         ))}
 
-        {/* <div>
-        <button onClick={prevPage}>Previous Page</button>
-        <button onClick={nextPage}>Next Page</button>
-      </div> */}
-
-        <div>
-          <button onClick={prevPage}>Previous Page</button>
-          <button onClick={nextPage}>Next Page</button>
+<div>
+          {/* {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              onClick={() => setPage(index + 1)}
+              active={currentPage === index + 1}
+            >
+              {index + 1}
+            </button>
+          )} */}
         </div>
+
+       
       </Wrapper>
     </>
   );
