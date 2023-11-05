@@ -3,7 +3,7 @@ export const Wrapper=styled.div`
 background-color:black;
 `
 export const StyledHeader=styled.header`
-width:1201px;
+/* width:1201px; */
 height:120px;
 display:flex;
 justify-content:space-between;
@@ -15,6 +15,8 @@ export const FormLogo = styled.h2`
 width:111px;
 height:49px;
 color:white;
+font-size:40px;
+font-weight:700px;
 `
 export const LiStyle=styled.li`
 margin:50px;
@@ -22,6 +24,8 @@ color:white;
 width:85px;
 height: 35px;
 line-height:35px;
+font-size:35px;
+font-weight:700px;
 `
 export const NavStyle=styled.nav`
 display:flex;

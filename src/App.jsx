@@ -10,6 +10,7 @@ import ApiPage from "./pages/ApiPage";
 
 function App() {
   const [isUserAuthorized, setIsUserAuthorized] = useState(false);
+  
   return (
     <>
       <GlobalStyled/>

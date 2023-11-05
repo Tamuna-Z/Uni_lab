@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const CardWrapper=styled.div`
 background-color:grey;
 width:300px;
-height:150px;
+height:180px;
 margin:50px;
 padding:15px;
 border-radius:20px;
+text-align:center;
 `
 export const CardContainer=styled.div`
 display:flex;
@@ -21,3 +22,11 @@ margin-bottom:20px;
 // flex-wrap:wrap;
 // justify-content:center;
 // `
+export const PagingWrapper=styled.div`
+width:400px;
+height:60px;
+display:flex;
+justify-content:center;
+margin:0 auto;
+align-items:center;
+`

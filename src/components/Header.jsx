@@ -42,10 +42,8 @@ function Header({ selectedFile, formError }) {
           <FormLogo>Form</FormLogo>
           <NavStyle>
             <ul>
-              <LiStyle onClick={() => navigate('/api')}>api</LiStyle>
+              <LiStyle onClick={() => navigate('/api')} >api</LiStyle>
               {name && <LiStyle>{name}</LiStyle>}
-
-              {/* api */}
 
               {photo && (
                 <HeaderPhoto onClick={openModal}>

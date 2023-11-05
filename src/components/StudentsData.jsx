@@ -4,27 +4,8 @@ import studentsData from "./data";
 import { useState } from "react";
 
 function StudentsData() {
-  // const studentsPerPage = 10;
-  // const [currentPage, setCurrentPage] = useState(1);
-
-  // const indexOfLastStudent = currentPage * studentsPerPage;
-  // const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
-  // const currentStudents = studentsData.slice(indexOfFirstStudent, indexOfLastStudent);
-
-  // const totalPages = Math.ceil(studentsData.length / studentsPerPage);
-
-  // const nextPage = () => {
-  //   if (currentPage < totalPages) {
-  //     setCurrentPage(currentPage + 1);
-  //   }
-  // };
-
-  // const prevPage = () => {
-  //   if (currentPage > 1) {
-  //     setCurrentPage(currentPage - 1);
-  //   }
-  // };
-
+ 
+  // const[item,setItem]=useState(StudentsData);
   const studentsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastStudent = currentPage * studentsPerPage;

@@ -9,7 +9,7 @@ function MakingPages({totalPosts,postsPerPage, setCurrentPage}) {
   return (
     <div>
         {pages.map((page, index) => (
-        <button
+        <button style={{width:'30px',height:'30px'}}
           key={`page_${index}`}
           onClick={() => setCurrentPage(page)}
         >

@@ -1,14 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { CardWrapper, CardContainer } from "../styledcomponents/ApiPage.styled";
+import { CardWrapper, CardContainer,PagingWrapper } from "../styledcomponents/ApiPage.styled";
 import Header from "../components/Header";
 import MakingPages from "../components/MakingPages";
 
 function ApiPage() {
   const [dateItem, setDateItem] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(8);
+  const [postsPerPage, setPostsPerPage] = useState(9);
 
   useEffect(() => {
     const requestUser = async () => {
@@ -35,15 +35,15 @@ function ApiPage() {
             <div key={index}>{user.body}</div>
           </CardWrapper>
         ))}
-      
-      </CardContainer>
-      <div >
+
+        <PagingWrapper >
           <MakingPages
             totalPosts={dateItem.length}
             postsPerPage={postsPerPage}
             setCurrentPage={setCurrentPage}
           />
-        </div>
+        </PagingWrapper>
+      </CardContainer>
     </>
   );
 }
