@@ -16,7 +16,7 @@ function ApiPage() {
   useEffect(() => {
     const requestUser = async () => {
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/posts?_limit=10"
+        "https://jsonplaceholder.typicode.com/posts"
       );
       const data = response.data;
       setDateItem(data);
@@ -32,7 +32,7 @@ function ApiPage() {
     <>
       <Header />
       <CardContainer dataItem={currentPosts}>
-        {dateItem.map((user, index) => (
+        {currentPosts.map((user, index) => (
           <CardWrapper  >
             <div key={index}>{user.title}</div>
             <div key={index}>{user.body}</div>
