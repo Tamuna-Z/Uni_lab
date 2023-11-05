@@ -3,7 +3,6 @@ import "./App.css";
 import Landing from "./pages/Landing";
 import Authorization from "./pages/Authorization";
 import Form from "./pages/Form";
-import Api_page from "./pages/Api_page";
 import { Routes, Route , Navigate} from "react-router-dom";
 import { GlobalStyled } from "./styledcomponents/Global.styled";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +14,7 @@ function App() {
     <>
       <GlobalStyled/>
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route path="/" element={<Landing/>} />
         <Route
           path="/authorization"
           element={<Authorization setIsUserAuthorized={setIsUserAuthorized} />}
