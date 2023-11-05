@@ -14,7 +14,7 @@ function Filter() {
       <img
         src={icon}
         alt="filterIcon"
-        style={{ position: "absolute", top: "35px", left: "40px" }}
+        style={{ position: "absolute", top: "35px", left: "40px"}}
         // onClick={togglePopup}
       />
       <FilterWrapper placeholder="Filter" type="text" dir="rtl" />

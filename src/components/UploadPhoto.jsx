@@ -94,7 +94,7 @@ function UploadPhoto({ setIsUserAuthorized }) {
         <Upload type="file" accept="image/*" onChange={handleFileChange} style={{display:'none'}}/>
         </IconWrapper>
         </PhotoWrapper>
-        <h3 style={{padding:'12px'}}>Fill in your name</h3>
+        <h3 style={{padding:'12px',display:'inline-block'}}>Fill in your name</h3>
       </div>
       <div>
         <form onSubmit={handleSignIn}>

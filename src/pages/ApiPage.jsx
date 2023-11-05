@@ -30,7 +30,7 @@ function ApiPage() {
       <Header />
       <CardContainer dataItem={currentPosts}>
         {currentPosts.map((user, index) => (
-          <CardWrapper>
+          <CardWrapper key={user.id}>
             <div key={index}>{user.title}</div>
             <div key={index}>{user.body}</div>
           </CardWrapper>

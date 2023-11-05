@@ -76,3 +76,11 @@ export const CloseSign=styled.span`
           color: red;
           font-size: 24px;
 `
+
+export const SignOutButton=styled.button`
+width: 60px;
+height:30px;
+background-color:grey;
+margin:60px 40px;
+
+`

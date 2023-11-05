@@ -40,6 +40,8 @@ width:532px;
 height:101px;
 margin:15px;
 border:none;
+font-size:30px;
+padding-left:30px;
 `
 export const SignIn=styled.button`
 background-color:#4980C0;
@@ -47,4 +49,5 @@ width:395px;
 height:75px;
 color:white;
 border-radius:50px;
+border:none;
 `

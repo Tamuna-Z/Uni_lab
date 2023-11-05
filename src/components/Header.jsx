@@ -9,7 +9,7 @@ import {
   HeaderPhoto,
   Image,
   PopUpWrapper,
-  
+  SignOutButton,
   CloseSign,
 } from "../styledcomponents/header.styled";
 import { useNavigate } from 'react-router-dom';
