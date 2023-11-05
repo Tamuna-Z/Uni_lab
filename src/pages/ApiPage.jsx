@@ -1,33 +1,47 @@
-import React from 'react';
-import { useState,useEffect} from 'react';
-import axios from 'axios';
-import {CardWrapper,CardContainer} from "../styledcomponents/ApiPage.styled";
+import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { CardWrapper, CardContainer } from "../styledcomponents/ApiPage.styled";
 import Header from "../components/Header";
+import MakingPages from "../components/MakingPages";
+
+
+
 
 function ApiPage() {
-  const [dateItem,setDateItem]=useState([]);
+  const [dateItem, setDateItem] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(8);
 
-  useEffect(()=>{
-    const requestUser=async()=>{
-      const response=await axios.get("https://jsonplaceholder.typicode.com/posts?_limit=10");
-      const data =response.data;
+  useEffect(() => {
+    const requestUser = async () => {
+      const response = await axios.get(
+        "https://jsonplaceholder.typicode.com/posts?_limit=10"
+      );
+      const data = response.data;
       setDateItem(data);
     };
 
     requestUser();
-  },[]);
+  }, []);
+
+  const lastPostIndex = currentPage * postsPerPage;
+  const firstPostIndex = lastPostIndex - postsPerPage;
+  const currentPosts = dateItem.slice(firstPostIndex, lastPostIndex);
   return (
     <>
-    <Header/>
-    <CardContainer>{dateItem.map((user)=>(
-      <CardWrapper>
-        <div key={user.id}>{user.title}</div>
-      <div key={user.id}>{user.body}</div>
-      </CardWrapper>
-
-    ))}</CardContainer>
+      <Header />
+      <CardContainer dataItem={currentPosts}>
+        {dateItem.map((user, index) => (
+          <CardWrapper  >
+            <div key={index}>{user.title}</div>
+            <div key={index}>{user.body}</div>
+          </CardWrapper>
+        ))}
+        <MakingPages totalPosts={dateItem.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
+      </CardContainer>
     </>
-  )
+  );
 }
 
-export default ApiPage
+export default ApiPage;

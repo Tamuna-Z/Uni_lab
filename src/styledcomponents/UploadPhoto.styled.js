@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export const AuthorizationContainer=styled.div`
 width:694px;
-height:100vh;
+height:694px;
 background-color:white;
 margin: 0 auto;
 display:flex;
@@ -36,15 +36,15 @@ left:40px;
 `
 export const FillName=styled.input`
 background-color:#E6EBFF;
-width:200px;
-height:50px;
+width:532px;
+height:101px;
 margin:15px;
 border:none;
 `
 export const SignIn=styled.button`
 background-color:#4980C0;
-width:164px;
-height:30px;
+width:395px;
+height:75px;
 color:white;
 border-radius:50px;
 `
