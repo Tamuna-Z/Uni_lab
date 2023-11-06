@@ -19,6 +19,7 @@ function Header({ selectedFile, formError }) {
   const photo = localStorage.getItem("uploadedFile");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+  
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -28,12 +29,14 @@ function Header({ selectedFile, formError }) {
     setIsModalOpen(false);
   };
 
-  // const signOut = () => {
-  //   // Clear localStorage data and navigate to the landing page
-  //   localStorage.removeItem("userName");
-  //   localStorage.removeItem("uploadedFile");
-  //   navigate("/");
-  // };
+  const signOut = async () => {
+    // Clear localStorage data
+    window.localStorage.removeItem("userName");
+    window.localStorage.removeItem("uploadedFile");
+  
+    // Navigate to the landing page
+    navigate("/");
+  };
 
   return (
     <>
@@ -70,7 +73,7 @@ function Header({ selectedFile, formError }) {
               }}
             />
 
-            <SignOutButton>sign out</SignOutButton>
+            <SignOutButton onClick={signOut}>sign out</SignOutButton>
           </div>
         </PopUpWrapper>
       )}
