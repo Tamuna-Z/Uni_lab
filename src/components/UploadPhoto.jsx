@@ -2,9 +2,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMemo } from "react";
-import {AuthorizationContainer,Title,PhotoWrapper,IconWrapper,Upload,FillName,SignIn} from "../styledcomponents/UploadPhoto.styled";
-import icon from "../assets/addPhoto.png"
-
+import {
+  AuthorizationContainer,
+  Title,
+  PhotoWrapper,
+  IconWrapper,
+  Upload,
+  FillName,
+  SignIn,
+} from "../styledcomponents/UploadPhoto.styled";
+import icon from "../assets/addPhoto.png";
 
 function UploadPhoto({ setIsUserAuthorized }) {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -82,33 +89,48 @@ function UploadPhoto({ setIsUserAuthorized }) {
   }, []);
 
   return (
-    <div style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <AuthorizationContainer>
-      <Title>Get Started</Title>
-      <div>
-        <h2>add a Photo</h2>
-        <PhotoWrapper>
-          <IconWrapper >
-          <img src={icon} alt="Icon" />
+        <Title>Get Started</Title>
+        <div>
+          <h2>add a Photo</h2>
+          <PhotoWrapper>
+            <IconWrapper>
+              <img src={icon} alt="Icon" />
 
-        <Upload type="file" accept="image/*" onChange={handleFileChange} style={{display:'none'}}/>
-        </IconWrapper>
-        </PhotoWrapper>
-        <h3 style={{padding:'12px',display:'inline-block'}}>Fill in your name</h3>
-      </div>
-      <div>
-        <form onSubmit={handleSignIn}>
-          <FillName
-            type="text"
-            placeholder="Your Name"
-            value={name} // Bind the input value to the 'name' state
-            onChange={handleNameChange} // Handle input changes
-          />
-          <div><SignIn type="submit">Sign in</SignIn></div>
-        </form>
-        {formError && <p style={{ color: "red" }}>{formError}</p>}
-      </div>
-    </AuthorizationContainer>
+              <Upload
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                style={{ display: "none" }}
+              />
+            </IconWrapper>
+          </PhotoWrapper>
+          <h3 style={{ padding: "12px", display: "inline-block" }}>
+            Fill in your name
+          </h3>
+        </div>
+        <div>
+          <form onSubmit={handleSignIn}>
+            <FillName
+              type="text"
+              placeholder="Your Name"
+              value={name} // Bind the input value to the 'name' state
+              onChange={handleNameChange} // Handle input changes
+            />
+            <div>
+              <SignIn type="submit">Sign in</SignIn>
+            </div>
+          </form>
+          {formError && <p style={{ color: "red" }}>{formError}</p>}
+        </div>
+      </AuthorizationContainer>
     </div>
   );
 }

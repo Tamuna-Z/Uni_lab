@@ -8,8 +8,8 @@ margin:25px 42px 25px 24px;
 position:relative;
 text-align:center;
 `
-// const FilterPopup = styled.div`
-//   /* display: ${({ isOpen }) => (isOpen ? 'block' : 'none')}; */
+// const PopUpFilter = styled.div`
+//   display: block;
 //   position: absolute;
 //   top: 40px;
 //   left: 0;
@@ -19,3 +19,4 @@ text-align:center;
 //   border-radius: 4px;
 //   z-index: 1;
 // `;
+// ${({ isOpen }) => (isOpen ? 'block' )};

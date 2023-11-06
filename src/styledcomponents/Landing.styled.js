@@ -30,6 +30,8 @@ export const ContentWrapper = styled.div`
 export const Icon =styled.img`
 width:164px;
 height:166px;
+margin-top:216px;
+margin-bottom:52px;
 
 `
 
@@ -41,6 +43,8 @@ padding-top:70px;
 color:#4980C0;
 line-height:119.23px;
 font-weight:400px;
+font-size: 96px;
+margin-bottom:52px;
 `
 export const GetStarted=styled.button`
 width:395px;
