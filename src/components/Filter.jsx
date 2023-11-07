@@ -1,18 +1,39 @@
 import React from "react";
-import { FilterWrapper,SearchWrapper,PopUpTitle,ActiveBox,InactiveBox} from "../styledcomponents/Filter.styled";
+import {
+  FilterWrapper,
+  SearchWrapper,
+  PopUpTitle,
+  ActiveBox,
+  InactiveBox,
+  PopWindow,CheckBox
+} from "../styledcomponents/Filter.styled";
 import icon from "../assets/filter.png";
 import { useState } from "react";
 import searchIcon from "../assets/search.png";
-import arrow from "../assets/group.png";
+import check from "../assets/check.png";
 import vector from "../assets/vector.png";
 
-function Filter() {
+
+function Filter({ handleFilterChange }) {
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [activeChecked, setActiveChecked] = useState(false);
+  const [inactiveChecked, setInactiveChecked] = useState(false);
+
+  const handleActiveCheckboxChange = () => {
+    setActiveChecked(!activeChecked);
+    handleFilterChange(activeChecked, !activeChecked); // Pass the filter state to the parent
+  };
+
+  const handleInactiveCheckboxChange = () => {
+    setInactiveChecked(!inactiveChecked);
+    handleFilterChange(!inactiveChecked, inactiveChecked); // Pass the filter state to the parent
+  };
 
   const togglePopup = () => {
     setPopupOpen(!isPopupOpen);
   };
   return (
+    // FilterBox
     <div style={{ position: "relative" }}>
       <img
         src={icon}
@@ -21,67 +42,72 @@ function Filter() {
           position: "absolute",
           top: "35px",
           left: "380px",
-          zIndex: '1',
-          cursor: 'pointer',
+          zIndex: "1",
+          cursor: "pointer",
         }}
         onClick={togglePopup}
       />
-      
 
-
-      <div style={{display:'flex'}}>
-      <FilterWrapper placeholder="Filter" type="text" dir="rtl" />
-      <SearchWrapper type="text" dir="rtl" />
+      <div style={{ display: "flex" }}>
+        <FilterWrapper placeholder="Filter" type="text" dir="rtl" />
+        {/* SearchBox */}
+        <SearchWrapper type="text" dir="rtl" />
       </div>
 
       <div style={{ position: "relative" }}>
-      <img
-        src={searchIcon}
-        alt="SearchIcon"
-        style={{
-          position: "absolute",
-          top: "35px",
-          left: "1315px",
-          zIndex: '1',
-          cursor: 'pointer',
-        }}/>
-
-      </div>
-      {isPopupOpen && (
-        <div
+        <img
+          src={searchIcon}
+          alt="SearchIcon"
           style={{
-            position: 'absolute',
-            top: '95px',
-            left: '60px',
-            width: '297px',
-            height: '296px',
-            backgroundColor: 'white',
-            zIndex: '1',
+            position: "absolute",
+            top: "35px",
+            left: "1315px",
+            zIndex: "1",
+            cursor: "pointer",
           }}
-        >
+        />
+      </div>
+      {/* when I click ,pop up displays */}
+      {isPopupOpen && (
+        <PopWindow>
           <div>
-            <img src={vector} alt="vector icon"  style={{position:'absolute',top:'47px',left:'15px'}}/>
+            <img
+              src={vector}
+              alt="vector icon"
+              style={{ position: "absolute", top: "47px", left: "15px" }}
+            />
             <PopUpTitle>სტუდენტის სტატუსი</PopUpTitle>
           </div>
-          
+{/* id="activeStudentsCheckbox"
+          onChange={handleActiveCheckboxClick} */}
           <ActiveBox>
-            <img src={arrow} alt="arrow icon" />
+            <CheckBox   checked={activeChecked} onChange={handleActiveCheckboxChange}>
+            <img src={check} alt="check icon" style={{position:'absolute',top:'3px',left:'3px'}} />
+            </CheckBox>
+            Active
           </ActiveBox>
-          <InactiveBox>
-            <img src={arrow} alt="arrow icon" />
-          </InactiveBox>
+
+          <ActiveBox>
+            <CheckBox checked={inactiveChecked} onChange={handleInactiveCheckboxChange} >
+            <img src={check} alt="check icon" style={{position:'absolute',top:'3px',left:'3px'}} />
+            </CheckBox>
+            InActive
+          </ActiveBox>
+
+          
 
           <div>
-          <img src={vector} alt="vector icon"  style={{position:'absolute',top:'138px',left:'15px'}}/>
-            <PopUpTitle style={{marginTop:'0'}}>სქესი</PopUpTitle>
+            <img
+              src={vector}
+              alt="vector icon"
+              style={{ position: "absolute", top: "138px", left: "15px" }}
+            />
+            <PopUpTitle style={{ marginTop: "0" }}>სქესი</PopUpTitle>
           </div>
-        </div>
+        </PopWindow>
       )}
     </div>
-    
   );
 }
 
 export default Filter;
-
-

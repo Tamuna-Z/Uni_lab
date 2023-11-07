@@ -20,6 +20,15 @@ text-align:center;
 border-radius:8px;
 
 `
+export const PopWindow=styled.div`
+ position:absolute;
+            top: 95px;
+            left: 60px;
+            width: 297px;
+            height: 296px;
+            background-color: white;
+            z-index: 1;
+`
 export const PopUpTitle=styled.h2`
 width:165px;
 /* height:107px; */
@@ -33,6 +42,16 @@ width:82px;
 height:20px;
 border-radius:1px;
 margin:1px 20px 8px 48px;
+display:flex;
+
+`
+export const CheckBox=styled.div`
+width:20px;
+height:20px;
+background-color:#3669A2;
+position:relative;
+border-radius:1px;
+margin-right:5px;
 `
 export const InactiveBox=styled.div`
 width:82px;

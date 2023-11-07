@@ -3,9 +3,9 @@ import { Wrapper, DataLi } from "../styledcomponents/StudentsData.styled";
 import studentsData from "./data";
 import { useState } from "react";
 
-function StudentsData() {
+
+function StudentsData({ activeFilter, inactiveFilter }) {
  
-  // const[item,setItem]=useState(StudentsData);
   const studentsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const indexOfLastStudent = currentPage * studentsPerPage;
@@ -20,6 +20,16 @@ function StudentsData() {
   const setPage = (page) => {
     setCurrentPage(page);
   };
+  const filteredStudents = studentsData.filter((student) => {
+    if (activeFilter && student.status === "Active") {
+      return true;
+    }
+    if (inactiveFilter && student.status === "Inactive") {
+      return true;
+    }
+    return !activeFilter && !inactiveFilter; // Show all if no filters are checked
+  });
+  
 
   return (
     <>
@@ -37,8 +47,8 @@ function StudentsData() {
           <li>მისამართი</li>
           <li>დაბადების თარიღი</li>
         </ul>
-
-        {currentStudents.map((student) => (
+{/* currentStudents default */}
+        {filteredStudents.map((student) => (
           <ul key={student.id}>
             <DataLi key={student.id}>{student.name}</DataLi>
             <li >{student.status}</li>
@@ -49,20 +59,9 @@ function StudentsData() {
             <li >{student.address}</li>
           </ul>
         ))}
-
-<div>
-          {/* {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index}
-              onClick={() => setPage(index + 1)}
-              active={currentPage === index + 1}
-            >
-              {index + 1}
-            </button>
-          )} */}
-        </div>
-
-       
+        {/* {filteredStudents.map((student) => (
+        // ... existing code to render filtered students
+      ))} */}
       </Wrapper>
     </>
   );

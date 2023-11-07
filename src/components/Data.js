@@ -3,7 +3,7 @@ const studentsData = [
     {
       id: 1,
       name: 'John Doe',
-      status: 'Active',
+      status: 'Inactive',
       gender: 'Male',
       idNumber: '12345',
       email: 'john.doe@example.com',
@@ -25,7 +25,7 @@ const studentsData = [
     {
         id: 3,
         name: 'John Doe',
-        status: 'Active',
+        status: 'Inactive',
         gender: 'Male',
         idNumber: '12345',
         email: 'john.doe@example.com',
@@ -48,7 +48,7 @@ const studentsData = [
       {
         id: 5,
         name: 'John Doe',
-        status: 'Active',
+        status: 'Inactive',
         gender: 'Male',
         idNumber: '12345',
         email: 'john.doe@example.com',
