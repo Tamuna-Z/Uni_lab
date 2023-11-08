@@ -80,13 +80,24 @@ function UploadPhoto({ setIsUserAuthorized }) {
       setFormError("Please fill in both the photo and name fields.");
     }
   };
-  // Use the 'useEffect' hook to retrieve the name from localStorage on component initialization
-  useEffect(() => {
+
+  const initializeFromLocalStorage = () => {
     const storedName = localStorage.getItem("userName");
     if (storedName) {
       setName(storedName);
     }
-  }, []);
+
+    // Retrieve the selected file from localStorage, if it exists
+    const storedFile = localStorage.getItem("uploadedFile");
+    if (storedFile) {
+      setSelectedFile(storedFile);
+    }
+  };
+
+  useEffect(() => {
+    // Initialize component state from localStorage
+    initializeFromLocalStorage();
+  }, []); // Empty dependency array ensures this runs only once when the component mounts
 
   return (
     <div

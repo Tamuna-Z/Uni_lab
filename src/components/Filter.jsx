@@ -5,7 +5,8 @@ import {
   PopUpTitle,
   ActiveBox,
   InactiveBox,
-  PopWindow,CheckBox
+  PopWindow,
+  CheckBox,
 } from "../styledcomponents/Filter.styled";
 import icon from "../assets/filter.png";
 import { useState } from "react";
@@ -13,21 +14,20 @@ import searchIcon from "../assets/search.png";
 import check from "../assets/check.png";
 import vector from "../assets/vector.png";
 
-
-function Filter({ handleFilterChange }) {
+function Filter() {
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [activeChecked, setActiveChecked] = useState(false);
-  const [inactiveChecked, setInactiveChecked] = useState(false);
+  // const [activeChecked, setActiveChecked] = useState(false);
+  // const [inactiveChecked, setInactiveChecked] = useState(false);
 
-  const handleActiveCheckboxChange = () => {
-    setActiveChecked(!activeChecked);
-    handleFilterChange(activeChecked, !activeChecked); // Pass the filter state to the parent
-  };
+  // const handleActiveCheckboxChange = () => {
+  //   setActiveChecked(!activeChecked);
+  //   handleFilterChange(activeChecked, !activeChecked); // Pass the filter state to the parent
+  // };
 
-  const handleInactiveCheckboxChange = () => {
-    setInactiveChecked(!inactiveChecked);
-    handleFilterChange(!inactiveChecked, inactiveChecked); // Pass the filter state to the parent
-  };
+  // const handleInactiveCheckboxChange = () => {
+  //   setInactiveChecked(!inactiveChecked);
+  //   handleFilterChange(!inactiveChecked, inactiveChecked); // Pass the filter state to the parent
+  // };
 
   const togglePopup = () => {
     setPopupOpen(!isPopupOpen);
@@ -50,23 +50,25 @@ function Filter({ handleFilterChange }) {
 
       <div style={{ display: "flex" }}>
         <FilterWrapper placeholder="Filter" type="text" dir="rtl" />
+
         {/* SearchBox */}
         <SearchWrapper type="text" dir="rtl" />
+        <div style={{ position: "relative" }}>
+          <img
+            src={searchIcon}
+            alt="SearchIcon"
+            style={{
+              position: "absolute",
+              top: "151px",
+              left: "1430px",
+              zIndex: "1",
+              cursor: "pointer",
+              color: "red",
+            }}
+          />
+        </div>
       </div>
 
-      <div style={{ position: "relative" }}>
-        <img
-          src={searchIcon}
-          alt="SearchIcon"
-          style={{
-            position: "absolute",
-            top: "35px",
-            left: "1315px",
-            zIndex: "1",
-            cursor: "pointer",
-          }}
-        />
-      </div>
       {/* when I click ,pop up displays */}
       {isPopupOpen && (
         <PopWindow>
@@ -78,23 +80,34 @@ function Filter({ handleFilterChange }) {
             />
             <PopUpTitle>სტუდენტის სტატუსი</PopUpTitle>
           </div>
-{/* id="activeStudentsCheckbox"
-          onChange={handleActiveCheckboxClick} */}
+
           <ActiveBox>
-            <CheckBox   checked={activeChecked} onChange={handleActiveCheckboxChange}>
-            <img src={check} alt="check icon" style={{position:'absolute',top:'3px',left:'3px'}} />
+            <CheckBox
+              // checked={activeChecked}
+              // onChange={handleActiveCheckboxChange}
+            >
+              <img
+                src={check}
+                alt="check icon"
+                style={{ position: "absolute", top: "3px", left: "3px" }}
+              />
             </CheckBox>
             Active
           </ActiveBox>
 
           <ActiveBox>
-            <CheckBox checked={inactiveChecked} onChange={handleInactiveCheckboxChange} >
-            <img src={check} alt="check icon" style={{position:'absolute',top:'3px',left:'3px'}} />
+            <CheckBox
+              // checked={inactiveChecked}
+              // onChange={handleInactiveCheckboxChange}
+            >
+              <img
+                src={check}
+                alt="check icon"
+                style={{ position: "absolute", top: "3px", left: "3px" }}
+              />
             </CheckBox>
             InActive
           </ActiveBox>
-
-          
 
           <div>
             <img

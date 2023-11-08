@@ -12,14 +12,15 @@ import {
   SignOutButton,
   CloseSign,
 } from "../styledcomponents/header.styled";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-function Header({ selectedFile, formError }) {
+function Header({ setSelectedFile, setIsUserAuthorized }) {
   const name = localStorage.getItem("userName");
   const photo = localStorage.getItem("uploadedFile");
+  console.log("userName:", name);
+  console.log("uploadedFile:", photo);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -29,14 +30,15 @@ function Header({ selectedFile, formError }) {
     setIsModalOpen(false);
   };
 
-  const signOut = async () => {
-    // Clear localStorage data
-    window.localStorage.removeItem("userName");
-    window.localStorage.removeItem("uploadedFile");
-  
-    // Navigate to the landing page
-    navigate("/");
-  };
+  // const handleSignOut = (e) => {
+  //   e.preventDefault();
+
+  //   // Clear the stored data in localStorage
+  //   localStorage.removeItem("userName");
+  //   localStorage.removeItem("uploadedFile");
+  //   navigate("/landing");
+  //   setIsUserAuthorized(false);
+  // };
 
   return (
     <>
@@ -45,7 +47,7 @@ function Header({ selectedFile, formError }) {
           <FormLogo>Form</FormLogo>
           <NavStyle>
             <ul>
-              <LiStyle onClick={() => navigate('/api')} >api</LiStyle>
+              <LiStyle onClick={() => navigate("/api")}>api</LiStyle>
               {name && <LiStyle>{name}</LiStyle>}
 
               {photo && (
@@ -73,7 +75,7 @@ function Header({ selectedFile, formError }) {
               }}
             />
 
-            <SignOutButton onClick={signOut}>sign out</SignOutButton>
+            <SignOutButton >Sign out</SignOutButton>
           </div>
         </PopUpWrapper>
       )}
